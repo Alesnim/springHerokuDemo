@@ -16,12 +16,7 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        catGetService.getUserByIdAsync()
-				.subscribe(x -> {
-							System.out.println(x.getUrl());
-							catImageRepo.save(x);
-						}
-				);
+
 
     }
 
