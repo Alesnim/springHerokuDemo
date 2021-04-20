@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CatImageRepo extends CrudRepository<CatImage, Long> {
 
     CatImage findCatImageById(long id);
+
 }

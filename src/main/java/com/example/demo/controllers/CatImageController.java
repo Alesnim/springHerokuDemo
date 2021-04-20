@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -21,6 +22,7 @@ public class CatImageController {
     CatGetService catGetService;
     @Autowired
     CatImageRepo catImageRepo;
+
 
     @CrossOrigin
     @GetMapping("/cats")
@@ -35,6 +37,21 @@ public class CatImageController {
 
         return StreamSupport.stream(catImageRepo.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    }
+
+
+    @CrossOrigin
+    @GetMapping("/cat/random")
+    public @ResponseBody
+    CatImage getRandomCat() {
+        Random random = new Random();
+        List<CatImage> imgs = StreamSupport
+                .stream(catImageRepo
+                        .findAll()
+                        .spliterator(), false)
+                .collect(Collectors.toList());
+
+        return imgs.get(random.nextInt(imgs.size()));
     }
 
 }
