@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Date;
@@ -12,6 +13,7 @@ public class CatImage {
     private long id;
     private String url;
     private Date created_at;
+    @ElementCollection
     private List<String> tags;
 
 
